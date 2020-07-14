@@ -1,7 +1,4 @@
 package demo.strategy;
-
-import java.util.Comparator;
-
 /**
  * * 策略模式的直接体现，，，，实现一个接口
  * @author zhaopeng

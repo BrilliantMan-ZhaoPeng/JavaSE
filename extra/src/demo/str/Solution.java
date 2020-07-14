@@ -1,15 +1,5 @@
 package demo.str;
-
-import demo.A;
-import demo.Test;
-import javafx.scene.effect.Blend;
-import sun.plugin2.gluegen.runtime.CPU;
-
-import javax.swing.*;
-import java.awt.event.ItemEvent;
 import java.util.*;
-import java.util.concurrent.CountDownLatch;
-
 /**
  * @author zhaopeng
  * @create 2020-06-29 16:47
@@ -507,9 +497,112 @@ public class Solution {
     }
 
 
+    /**
+     * 字符串压缩。利用字符重复出现的次数，编写一种方法，实现基本的字符串压缩功能。比如，字符串aabcccccaaa会变为a2b1c5a3。若“压缩”后的字符串没有变短，则返回原先的字符串。你可以假设字符串中只包含大小写英文字母（a至z）。
+     *
+     * 示例1:
+     *
+     *  输入："aabcccccaaa"
+     *  输出："a2b1c5a3"
+     * 示例2:
+     *
+     *  输入："abbccd"
+     *  输出："abbccd"
+     *  解释："abbccd"压缩后为"a1b2c2d1"，比原字符串长度更长。
+     * 提示：
+     *
+     * 字符串长度在[0, 50000]范围内。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/compress-string-lcci
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+
+    public String compressString(String S) {
+        StringBuilder sb=new StringBuilder();
+        for (int i = 0; i < S.length(); i++) {
+            char c = S.charAt(i);
+            int count=1;
+            System.err.println("c:"+c);
+            System.err.println("index:"+i);
+            while( i < S.length()-1 && c == S.charAt(i+1)  ){
+                count++;
+                i++;
+            }
+            sb.append(c+""+count);
+        }
+        String s = sb.toString();
+        return s.length() >= S.length() ? S:s;
+    }
+
+
+    /**
+     * 给你一个字符串 s ，字符串的「能量」定义为：只包含一种字符的最长非空子字符串的长度。
+     *
+     * 请你返回字符串的能量。
+     *
+     *  
+     *
+     * 示例 1：
+     *
+     * 输入：s = "leetcode"
+     * 输出：2
+     * 解释：子字符串 "ee" 长度为 2 ，只包含字符 'e' 。
+     * 示例 2：
+     *
+     * 输入：s = "abbcccddddeeeeedcba"
+     * 输出：5
+     * 解释：子字符串 "eeeee" 长度为 5 ，只包含字符 'e' 。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/consecutive-characters
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     */
+
+    public int maxPower(String s) {
+        int max=0;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int count=1;
+            while( i < s.length()-1 && c == s.charAt(i+1)  ){
+                count++;
+                i++;
+            }
+            max=Math.max(count,max);
+        }
+        return max;
+    }
+
+    /**
+     * 以字符串的形式读入两个数字，再以字符串的形式输出两个数字的和。
+     *
+     * 输入描述:
+     * 输入两行，表示两个数字a和b，-109 <= a , b <= 109  ，用双引号括起。
+     *
+     * 输出描述:
+     * 输出a+b的值，用双引号括起。
+     *
+     * 输入例子1:
+     * "-26"
+     * "100"
+     *
+     * 输出例子1:
+     * "74"
+     * 6 5 4 3 2 1
+     *
+     */
+
+    public String addStr(String a,String b){
+        Integer anum = Integer.valueOf(a);
+        Integer bnum = Integer.valueOf(b);
+        return anum+bnum+"";
+    }
+
+
     public static void main(String[] args) {
-        Solution solution=new Solution();
-       boolean b = solution.CheckPermutation("asvnpzurz", "urzsapzvn");
-        System.err.println(b);
+        char ch1=97;
+        char ch2='a';
+        System.out.println(" ch1="+ch1);
+        System.out.println(" ch2="+ch2);
     }
 }
